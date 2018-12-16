@@ -1,0 +1,23 @@
+{
+  "name": "cola",
+  "version": "1.0.0",
+  "description": "COLA Scraper",
+  "main": "app.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bravedragon623/COLA.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bravedragon623/COLA/issues"
+  },
+  "homepage": "https://github.com/bravedragon623/COLA#readme",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "puppeteer": "^1.11.0"
+  }
+}
