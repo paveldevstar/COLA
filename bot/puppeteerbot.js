@@ -120,17 +120,214 @@ class PuppeteerBot {
     }
   }
 
+  extractInfo(dom) {
+    if (dom.includes('<strong>TTB ID: </strong>')) {
+      dom = dom.replace(/<strong>[\s\S]+<\/strong>/g, ''); // This replaces <stong> Title </stong>
+      dom = dom.replace(/<a[\s\S]+<\/a>/g, ''); // This replaces quote mark link
+      dom = dom.replace(/(\r\n\t|\n|\r\t)/gm, ''); // This removes all multiple lines
+      dom = dom.replace(/s\/^\s+|\s+$|\s+(?=\s)\s+/g, ''); // This removes all leading and trimming spaces
+      return {
+        ttb_id: dom
+      };
+    } else if (dom.includes('<strong>Status: </strong>')) {
+      dom = dom.replace(/<strong>[\s\S]+<\/strong>/g, '');
+      dom = dom.replace(/<a[\s\S]+<\/a>/g, '');
+      dom = dom.replace(/(\r\n\t|\n|\r\t)/gm, '');
+      dom = dom.replace(/s\/^\s+|\s+$|\s+(?=\s)\s+/g, '');
+      dom = dom.replace(/&nbsp;/g, '');
+      return {
+        status: dom
+      }
+    } else if (dom.includes('<strong>Vendor Code: </strong>')) {
+      dom = dom.replace(/<strong>[\s\S]+<\/strong>/g, '');
+      dom = dom.replace(/<a[\s\S]+<\/a>/g, '');
+      dom = dom.replace(/(\r\n\t|\n|\r\t)/gm, '');
+      dom = dom.replace(/s\/^\s+|\s+$|\s+(?=\s)\s+/g, '');
+      dom = dom.replace(/&nbsp;/g, '');
+      return {
+        vendor_code: dom
+      }
+    } else if (dom.includes('<strong>Serial #: </strong>')) {
+      dom = dom.replace(/<strong>[\s\S]+<\/strong>/g, '');
+      dom = dom.replace(/<a[\s\S]+<\/a>/g, '');
+      dom = dom.replace(/(\r\n\t|\n|\r\t)/gm, '');
+      dom = dom.replace(/s\/^\s+|\s+$|\s+(?=\s)\s+/g, '');
+      dom = dom.replace(/&nbsp;/g, '');
+      return {
+        serial: dom
+      }
+    } else if (dom.includes('<strong>Class/Type Code: </strong>')) {
+      dom = dom.replace(/<strong>[\s\S]+<\/strong>/g, '');
+      dom = dom.replace(/<a[\s\S]+<\/a>/g, '');
+      dom = dom.replace(/(\r\n\t|\n|\r\t)/gm, '');
+      dom = dom.replace(/s\/^\s+|\s+$|\s+(?=\s)\s+/g, '');
+      dom = dom.replace(/&nbsp;/g, '');
+      return {
+        type_code: dom
+      }
+    } else if (dom.includes('<strong>Origin Code: </strong>')) {
+      dom = dom.replace(/<strong>[\s\S]+<\/strong>/g, '');
+      dom = dom.replace(/<a[\s\S]+<\/a>/g, '');
+      dom = dom.replace(/(\r\n\t|\n|\r\t)/gm, '');
+      dom = dom.replace(/s\/^\s+|\s+$|\s+(?=\s)\s+/g, '');
+      dom = dom.replace(/&nbsp;/g, '');
+      return {
+        origin_code: dom
+      }
+    } else if (dom.includes('<strong>Brand Name: </strong>')) {
+      dom = dom.replace(/<strong>[\s\S]+<\/strong>/g, '');
+      dom = dom.replace(/<a[\s\S]+<\/a>/g, '');
+      dom = dom.replace(/(\r\n\t|\n|\r\t)/gm, '');
+      dom = dom.replace(/s\/^\s+|\s+$|\s+(?=\s)\s+/g, '');
+      dom = dom.replace(/&nbsp;/g, '');
+      return {
+        brand_name: dom
+      }
+    } else if (dom.includes('<strong>Fanciful Name: </strong>')) {
+      dom = dom.replace(/<strong>[\s\S]+<\/strong>/g, '');
+      dom = dom.replace(/<a[\s\S]+<\/a>/g, '');
+      dom = dom.replace(/(\r\n\t|\n|\r\t)/gm, '');
+      dom = dom.replace(/s\/^\s+|\s+$|\s+(?=\s)\s+/g, '');
+      dom = dom.replace(/&nbsp;/g, '');
+      return {
+        fanciful_name: dom
+      }
+    } else if (dom.includes('<strong>Type of Application: </strong>')) {
+      dom = dom.replace(/<strong>[\s\S]+<\/strong>/g, '');
+      dom = dom.replace(/<a[\s\S]+<\/a>/g, '');
+      dom = dom.replace(/(\r\n\t|\n|\r\t)/gm, '');
+      dom = dom.replace(/s\/^\s+|\s+$|\s+(?=\s)\s+/g, '');
+      dom = dom.replace(/&nbsp;/g, '');
+      return {
+        type_application: dom
+      }
+    } else if (dom.includes('<strong>For Sale In: </strong>')) {
+      dom = dom.replace(/<strong>[\s\S]+<\/strong>/g, '');
+      dom = dom.replace(/<a[\s\S]+<\/a>/g, '');
+      dom = dom.replace(/(\r\n\t|\n|\r\t)/gm, '');
+      dom = dom.replace(/s\/^\s+|\s+$|\s+(?=\s)\s+/g, '');
+      dom = dom.replace(/&nbsp;/g, '');
+      return {
+        sale_id: dom
+      }
+    } else if (dom.includes('<strong>Total Bottle Capacity: </strong>')) {
+      dom = dom.replace(/<strong>[\s\S]+<\/strong>/g, '');
+      dom = dom.replace(/<a[\s\S]+<\/a>/g, '');
+      dom = dom.replace(/(\r\n\t|\n|\r\t)/gm, '');
+      dom = dom.replace(/s\/^\s+|\s+$|\s+(?=\s)\s+/g, '');
+      dom = dom.replace(/&nbsp;/g, '');
+      return {
+        total_bottle_capacity: dom
+      }
+    } else if (dom.includes('<strong>Formula : </strong>')) {
+      dom = dom.replace(/<strong>[\s\S]+<\/strong>/g, '');
+      dom = dom.replace(/<a[\s\S]+<\/a>/g, '');
+      dom = dom.replace(/(\r\n\t|\n|\r\t)/gm, '');
+      dom = dom.replace(/s\/^\s+|\s+$|\s+(?=\s)\s+/g, '');
+      dom = dom.replace(/&nbsp;/g, '');
+      return {
+        formula: dom
+      }
+    } else if (dom.includes('<strong>Approval Date:</strong>')) {
+      dom = dom.replace(/<strong>[\s\S]+<\/strong>/g, '');
+      dom = dom.replace(/<a[\s\S]+<\/a>/g, '');
+      dom = dom.replace(/(\r\n\t|\n|\r\t)/gm, '');
+      dom = dom.replace(/s\/^\s+|\s+$|\s+(?=\s)\s+/g, '');
+      dom = dom.replace(/&nbsp;/g, '');
+      return {
+        approval_date: dom
+      }
+    } else if (dom.includes('<strong>Qualifications: </strong>')) {
+      dom = dom.replace(/<strong>[\s\S]+<\/strong>/g, '');
+      dom = dom.replace(/<a[\s\S]+<\/a>/g, '');
+      dom = dom.replace(/(\r\n\t|\n|\r\t)/gm, '');
+      dom = dom.replace(/s\/^\s+|\s+$|\s+(?=\s)\s+/g, '');
+      dom = dom.replace(/&nbsp;/g, '');
+      return {
+        qualifications: dom
+      }
+    } else if (dom.includes('<strong>Lab No./Lab Date: </strong>')) {
+      dom = dom.replace(/<strong>[\s\S]+<\/strong>/g, '');
+      dom = dom.replace(/<a[\s\S]+<\/a>/g, '');
+      dom = dom.replace(/(\r\n\t|\n|\r\t)/gm, '');
+      dom = dom.replace(/s\/^\s+|\s+$|\s+(?=\s)\s+/g, '');
+      dom = dom.replace(/&nbsp;/g, '');
+      return {
+        lab_no_date: dom
+      }
+    } else if (dom.includes('<strong>Grape Varietal(s): </strong>')) {
+      dom = dom.replace(/<strong>[\s\S]+<\/strong>/g, '');
+      dom = dom.replace(/<a[\s\S]+<\/a>/g, '');
+      dom = dom.replace(/(\r\n\t|\n|\r\t)/gm, '');
+      dom = dom.replace(/s\/^\s+|\s+$|\s+(?=\s)\s+/g, '');
+      dom = dom.replace(/&nbsp;/g, '');
+      return {
+        grape_varietal: dom
+      }
+    } else if (dom.includes('<strong>Wine Vintage: </strong>')) {
+      dom = dom.replace(/<strong>[\s\S]+<\/strong>/g, '');
+      dom = dom.replace(/<a[\s\S]+<\/a>/g, '');
+      dom = dom.replace(/(\r\n\t|\n|\r\t)/gm, '');
+      dom = dom.replace(/s\/^\s+|\s+$|\s+(?=\s)\s+/g, '');
+      dom = dom.replace(/&nbsp;/g, '');
+      return {
+        wine_vintage: dom
+      }
+    }
+  }
+
   async extractFromID(_id) {
+    let ret = {} // This is container of extracted data
     try {
       if (!this.page) {
         await this.startBrowser()
       }
-      let url = 'https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicDisplaySearchAdvanced&ttbid='+_id;
-      await this.page.goto(url, {timeout: 0})
+      let url = 'https://www.ttbonline.gov/colasonline/viewColaDetails.do?action=publicDisplaySearchAdvanced&ttbid=' + _id; // url of each page
+      await this.page.goto(url, {
+        timeout: 0
+      })
+
+      // This is first box part of details page
+      const PART_1 = '.box:nth-of-type(1) > table > tbody > tr > td'
+      let html_list = await this.page.evaluate(async (PART_1) => {
+        let elements = document.querySelectorAll(PART_1);
+        let arr = [];
+        for (let i = 0; i < elements.length; i++) {
+          arr.push(elements[i].innerHTML);
+        }
+        return arr;
+      }, PART_1);
+      
+      for (let i = 0; i < html_list.length; i++) {
+        let v = this.extractInfo(html_list[i])
+        if (v) {
+          ret = Object.assign(v, ret);
+        }
+      }
+
+      // This is  second box part of details page
+      const PART_2 = '.box:nth-of-type(2) > table > tbody > tr > td'
+      html_list = await this.page.evaluate(async (PART_2) => {
+        let elements = document.querySelectorAll(PART_2);
+        let arr = [];
+        for (let i = 0; i < elements.length; i++) {
+          arr.push(elements[i].innerHTML);
+        }
+        return arr;
+      }, PART_2);
+      
+      for (let i = 0; i < html_list.length; i++) {
+        let v = this.extractInfo(html_list[i])
+        if (v) {
+          ret = Object.assign(v, ret);
+        }
+      }
+      console.log(ret);
+
     } catch (err) {
       console.log(err);
       throw (err);
-    }   
+    }
   }
 
   randomSleep(ms) {
